@@ -1,7 +1,17 @@
 name: Publicera spelet
+run-name: Publicera ${{ inputs.innehall }} på GitHub Pages
 
 on:
   workflow_dispatch:
+    inputs:
+      innehall:
+        description: Vad vill du publicera?
+        type: choice
+        required: true
+        default: spel
+        options:
+          - spel
+          - testsida
 
 permissions: {}
 
@@ -11,7 +21,7 @@ concurrency:
 
 jobs:
   build:
-    name: Bygg spelet
+    name: Förbered innehållet
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     permissions:
@@ -24,6 +34,7 @@ jobs:
           persist-credentials: false
 
       - name: Kontrollera att spelkoden finns
+        if: inputs.innehall == 'spel'
         run: |
           if [[ ! -f package.json || ! -f package-lock.json ]]; then
             echo '::error::Spara spelkoden på main innan du kör publiceringen.'
@@ -31,15 +42,18 @@ jobs:
           fi
 
       - name: Förbered Node.js
+        if: inputs.innehall == 'spel'
         uses: actions/setup-node@v6
         with:
           node-version: '22'
           cache: npm
 
       - name: Installera beroenden
+        if: inputs.innehall == 'spel'
         run: npm ci
 
       - name: Bygg spelet
+        if: inputs.innehall == 'spel'
         run: npm run build
 
       - name: Förbered GitHub Pages
@@ -48,7 +62,7 @@ jobs:
       - name: Ladda upp bygget
         uses: actions/upload-pages-artifact@v4
         with:
-          path: dist
+          path: ${{ inputs.innehall == 'testsida' && 'pages-test' || 'dist' }}
 
   deploy:
     name: Publicera på GitHub Pages
@@ -61,6 +75,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Publicera spelet
+      - name: Publicera innehållet
         id: deployment
         uses: actions/deploy-pages@v4
