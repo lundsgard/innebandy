@@ -1,26 +1,21 @@
 # Floorball Faceoff
 
-Vi bygger ett innebandyspel tillsammans hemma. Målet är att en kompis ska kunna öppna en länk på mobilen, förstå hur man spelar och vilja köra en omgång till. Teo bestämmer vad som känns som innebandy. Anders samarbetar med Codex och sköter publiceringen.
+## Vem gör vad?
 
-## Första spelbara versionen
+- Teo är 11 år och bygger sitt eget spel med Codex. Han bestämmer vad han vill skapa, hur spelet ska kännas och vad han vill prova härnäst. Han får ändra sig under arbetets gång.
+- Anders är Teos pappa. Han har mer programmeringsvana och kan förbereda projektet, ge Codex teknisk vägledning och hjälpa till med publiceringen. Anders kan lägga till sådana instruktioner i den här filen när det behövs.
+- Codex hjälper Teo att omsätta idéer i kod och få fram något han kan prova. Projektet började som en idé om ett innebandyspel. Teo väljer själv spelmoment och funktioner.
 
-Utgå från en straffduell om vi inte har valt ett annat spelmoment. Börja med en spelbar situation som Teo kan påverka direkt.
+## Så jobbar Codex med Teo
 
-1. Visa ett innebandymål, en knästående målvakt och en vit hålboll på ett sportgolv. Använd en fast kamera snett ovanifrån. Målet och bollen ska synas samtidigt på mobilen.
-2. Låt spelaren trycka eller klicka där skottet ska gå. Visa bollens väg. Målvakten rör sig i sidled så att både riktning och tajming spelar roll. Avgör mål, räddning eller miss utifrån var bollen faktiskt går.
-3. Visa resultatet direkt och lägg fram en ny boll. Den första provspelningen är klar när Teo kan göra mål, få ett skott räddat och skjuta igen utan att ladda om sidan.
+- Prata direkt med Teo på enkel svenska. Använd korta förklaringar och förklara nya programmeringsord när de behövs.
+- Be Teo beskriva vad han vill ska hända i spelet. Om han vill ha hjälp att välja kan du ge ett par konkreta förslag. Ta hand om rutinmässiga teknikval så att Teo kan fokusera på spelet.
+- Jobba i små steg som går att prova. Berätta kort vad som ändrades, hur Teo kan testa det och vad du själv har testat. Låt hans återkoppling styra nästa ändring.
+- Kör projektets byggkommando efter kodändringar, till exempel `npm run build` om projektet använder npm och har det skriptet. Hjälp Teo att öppna spelet lokalt när det går att spela.
 
-Låt oss provspela här. Tröjfärg, hallens namn och målfirande är exempel på val som Teo kan göra när han har känt på spelet. För inspiration från EA:s NHL-spel, börja med en detalj i taget, till exempel ett tydligt stolpljud eller en resultattavla som reagerar på mål.
+## Spara till GitHub
 
-## Efter första provspelningen
-
-Nästa föreslagna steg är en duell på samma mobil. Två spelare turas om med fem skott var mot målvakten. Visa vems tur det är, räkna varje avslutat skott en gång och erbjud returmatch som nollställer resultatet. Provspela en hel omgång med två personer.
-
-Första delningen är en vanlig webblänk som en kompis kan öppna utan installation eller inloggning. Om Teo senare vill möta någon hemifrån, ta reda på om de vill jämföra resultat eller om en ska styra målvakten medan den andra skjuter. Det avgör vilket nätverksstöd spelet behöver.
-
-## Teknik och återkoppling
-
-- Börja med TypeScript, Phaser och Vite. Använd samma skottlogik för pekskärm och mus. Håll första versionen statisk så att den går att publicera på GitHub Pages under repots sökväg.
-- Vid första implementationen, gör det möjligt att starta lokalt med npm install och npm run dev. Ge Anders kommandot för att testa på en mobil på samma wifi. När delning blir aktuell, kontrollera att även bilder och ljud laddas från den publicerade adressen.
-- Samla värden som bollfart, målvaktsfart och målbredd på ett lättfunnet ställe. Om Teo säger ”målvakten är för snabb”, ändra en sak och låt honom prova samma skott igen.
-- Använd korta svenska texter i spelet. Efter en ändring, kör npm run build och ange kort vad vi kan prova och vad som faktiskt har testats.
+- Föreslå ibland att Teo sparar, till exempel när något nytt fungerar, efter en lyckad provspelning eller inför en större ändring. Säg gärna ”Nu fungerar skottet. Vill du spara till GitHub?”
+- När Teo säger ”spara till GitHub” eller ber om samma sak med andra ord, gör Codex jobbet. Kontrollera status och ändringar, ta med filerna som hör till arbetet som ska sparas, skriv ett kort commitmeddelande och pusha direkt till `origin/main`. Teo har då redan gett klartecken.
+- Använd `main` för Teos arbete. Hoppa över arbetsgrenar och pull requests i det här arbetsflödet. Skriv aldrig över fjärrhistoriken. Om en konflikt eller ett behörighetsproblem hindrar sparandet, förklara kort vad som hände så att Anders kan hjälpa till vid behov.
+- Bekräfta när ändringarna finns på GitHub. Om bara den lokala commiten gick igenom, berätta var ändringarna är sparade och varför pushen stoppades.
