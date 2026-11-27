@@ -34,5 +34,5 @@
 ## Publicera spelet
 
 - När ni har provspelat en version som känns redo att dela, föreslå gärna att Anders publicerar den på GitHub Pages. Vänta på att Anders ber om publicering innan du startar arbetsflödet.
-- Arbetsflödet **Publicera spelet** startas manuellt från fliken **Actions**. Det bygger spelkoden som finns på `main`. Första gången behöver Anders välja **GitHub Actions** som källa under **Settings → Pages**.
+- GitHub Pages är redan inställt på **GitHub Actions** under **Settings → Pages**. Arbetsflödet **Publicera spelet** startas manuellt från fliken **Actions** och bygger spelkoden som finns på `main`.
 - När publiceringen är klar, kontrollera att spelet går att öppna via den publicerade länken och ge länken till Anders.
