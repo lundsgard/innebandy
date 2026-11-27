@@ -1,0 +1,66 @@
+name: Publicera spelet
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Bygg spelet
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: read
+    steps:
+      - name: Hämta koden
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Kontrollera att spelkoden finns
+        run: |
+          if [[ ! -f package.json || ! -f package-lock.json ]]; then
+            echo '::error::Spara spelkoden på main innan du kör publiceringen.'
+            exit 1
+          fi
+
+      - name: Förbered Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: '22'
+          cache: npm
+
+      - name: Installera beroenden
+        run: npm ci
+
+      - name: Bygg spelet
+        run: npm run build
+
+      - name: Förbered GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Ladda upp bygget
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    name: Publicera på GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicera spelet
+        id: deployment
+        uses: actions/deploy-pages@v4
