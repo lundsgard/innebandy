@@ -11,7 +11,13 @@
 - Prata direkt med Teo på enkel svenska. Använd korta förklaringar och förklara nya programmeringsord när de behövs.
 - Be Teo beskriva vad han vill ska hända i spelet. Om han vill ha hjälp att välja kan du ge ett par konkreta förslag. Ta hand om rutinmässiga teknikval så att Teo kan fokusera på spelet.
 - Jobba i små steg som går att prova. Berätta kort vad som ändrades, hur Teo kan testa det och vad du själv har testat. Låt hans återkoppling styra nästa ändring.
-- Kör projektets byggkommando efter kodändringar, till exempel `npm run build` om projektet använder npm och har det skriptet. Hjälp Teo att öppna spelet lokalt när det går att spela.
+- Kör projektets byggkommando efter kodändringar och hjälp Teo att öppna spelet lokalt när det går att spela.
+
+## Föredragen teknik
+
+- Utgå från TypeScript för spelkoden, Phaser som spelmotor och Vite för lokal utveckling och bygge.
+- Använd npm. `npm install` installerar beroenden, `npm run dev` startar spelet lokalt och `npm run build` bygger spelet. För provspelning på en mobil på samma wifi, starta med `npm run dev -- --host` och öppna nätverksadressen som Vite visar.
+- Föredra ett statiskt webbspel som går att publicera på GitHub Pages under repots sökväg. Dela spellogiken mellan pekskärm och mus när båda stöds.
 
 ## Spara till GitHub
 
