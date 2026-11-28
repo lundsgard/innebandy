@@ -1,0 +1,24 @@
+{
+  "name": "floorball-faceoff",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && npm run model && vite build",
+    "model": "node --import tsx scripts/create-print-model.ts",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "^0.187.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.11",
+    "@types/three": "^0.187.0",
+    "manifold-3d": "^3.5.5",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3",
+    "vite": "^6.3.5"
+  }
+}

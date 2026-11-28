@@ -1,0 +1,17 @@
+{
+  "unit": "mm",
+  "sizeMm": [
+    97.5,
+    87.5,
+    95.5
+  ],
+  "triangles": 12406,
+  "connectedParts": 1,
+  "closedSurface": true,
+  "outwardNormals": true,
+  "volumeMm3": 79033.95,
+  "stickDiameterMm": 3.5,
+  "orientation": "Foten nedåt",
+  "supports": "Under armar, händer och klubba",
+  "physicallyTestPrinted": false
+}

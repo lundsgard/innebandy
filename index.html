@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#123e3b" />
+    <title>Teos innebandy</title>
+  </head>
+  <body>
+    <main class="game-shell">
+      <header>
+        <p class="eyebrow">TEOS SPEL</p>
+        <h1>Innebandy</h1>
+        <p class="intro">Nykvarns IF möter Nyköping FBC</p>
+      </header>
+      <section class="match-scoreboard" aria-label="Matchresultat">
+        <div class="team-score home-team"><span class="team-chip">NIF</span><span>Nykvarns IF</span><strong id="goals">0</strong></div>
+        <div class="match-time"><span>5 MOT 5</span><output id="match-clock" aria-label="Tid kvar">2:00</output></div>
+        <div class="team-score away-team"><strong id="away-goals">0</strong><span>Nyköping FBC</span><span class="team-chip">FBC</span></div>
+      </section>
+      <div class="play-layout">
+        <div class="arena">
+          <div id="game" role="img" aria-label="Innebandy i Furuborghallen. Spring med WASD eller pilarna. Sikta och skjut genom att hålla och släppa på planen. Mellanslag skjuter och P passar. Ändra höjden med skotthöjdskontrollen." tabindex="0"></div>
+          <span class="arena-label">FURUBORGHALLEN · 40 × 20 M</span>
+          <span id="controlled-player" class="controlled-player">LUNDSGÅRD · 10</span>
+          <div id="celebration" aria-hidden="true"></div>
+          <div id="match-cover" class="match-cover">
+            <div class="match-intro">
+              <p class="eyebrow">FURUBORGHALLEN</p><h2>5 mot 5</h2>
+              <p>Nykvarns IF<br><span class="versus">mot</span><br>Nyköping FBC</p>
+              <p class="match-description">Fyra utespelare och en målvakt i varje lag.<br>Du spelar Nykvarns IF.</p>
+              <button id="start-cover" type="button">Starta match</button>
+            </div>
+          </div>
+        </div>
+        <aside class="controls" aria-label="Spelkontroller">
+          <div class="instructions">
+            <p id="feedback" role="status" aria-live="polite">Du spelar Nykvarns IF. Tryck på Starta match!</p>
+            <p class="hint">WASD / pilar: spring · Mellanslag: skjut eller bryt · P: passa eller byt</p>
+          </div>
+          <div class="match-buttons"><button id="start-match" type="button">Starta match</button><button id="camera-mode" type="button">Kamera: Hela planen</button></div>
+          <div class="crowd-controls" aria-label="Hejarklacken">
+            <div class="crowd-buttons"><button id="crowd-sound" type="button" aria-pressed="true">Publikljud: På</button><button id="crowd-cheer" type="button">Heja Nykvarn!</button></div>
+            <p id="crowd-caption" role="status" aria-live="polite">Läktaren: Heja Nykvarn!</p>
+          </div>
+          <section class="scoreboard" aria-label="Nykvarns matchstatistik">
+            <div><span id="shots">0</span><span class="score-label">SKOTT</span></div>
+            <div><span id="saves">0</span><span class="score-label">RÄDDAT</span></div>
+            <div><span id="passes">0</span><span class="score-label">PASS</span></div>
+          </section>
+          <div class="height-control">
+            <label for="shot-height">Skotthöjd <output id="height-value" for="shot-height">Lågt</output></label>
+            <input id="shot-height" type="range" min="0.036" max="1.9" step="0.005" value="0.036" />
+            <div class="height-presets" role="group" aria-label="Välj skotthöjd">
+              <button type="button" data-height="0.036" aria-pressed="true">Lågt</button>
+              <button type="button" data-height="0.55" aria-pressed="false">Halvhögt</button>
+              <button type="button" data-height="1.02" aria-pressed="false">Högt</button>
+            </div>
+          </div>
+          <div class="action-controls">
+            <div class="dpad" role="group" aria-label="Spring på planen">
+              <button type="button" data-move="0,-1" aria-label="Spring framåt">↑</button>
+              <button type="button" data-move="-1,0" aria-label="Spring vänster">←</button>
+              <button type="button" data-move="0,1" aria-label="Spring bakåt">↓</button>
+              <button type="button" data-move="1,0" aria-label="Spring höger">→</button>
+            </div>
+            <div class="ball-actions">
+              <button id="shoot" type="button">Skjut</button>
+              <button id="pass" type="button">Passa</button>
+            </div>
+          </div>
+          <button id="switch-player" class="switch-button" type="button">Byt spelare (B)</button>
+          <p class="hint play-tip">Anfall mot Nyköpings mål. Utan boll: spring nära och tryck Bryt. Den ljusa ringen visar vem du styr.</p>
+        </aside>
+      </div>
+      <details class="team-card">
+        <summary>Lagens spelare</summary>
+        <div id="team-rosters" class="team-rosters"></div>
+      </details>
+      <details class="print-card">
+        <summary>En egen figur till 3D-skrivaren</summary>
+        <p>Spelaren, klubban och bollen på en stadig fot. Figuren är ungefär 10 cm hög.</p>
+        <a href="./models/teos-innebandyspelare.stl" download>Hämta figuren (STL)</a>
+        <p class="hint">Anders kan öppna filen i skrivarens program. Skriv ut med foten nedåt och stöd under armarna och klubban. Figuren är inte provutskriven ännu.</p>
+      </details>
+    </main>
+    <audio id="crowd-voice" preload="auto" hidden></audio>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
